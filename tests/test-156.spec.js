@@ -1,13 +1,9 @@
-const fs = require("fs");
-for (let i = 0; i < 200; i++) {
-  fs.writeFileSync(
-    `./tests/test-${i}.spec.js`,
-    `
+
   const { test, expect } = require("@playwright/test");
   const sleep = () => new Promise((res) => setTimeout(res, 30000));
 
   
-  test.describe("file ${i}", () => {
+  test.describe("file 156", () => {
     test.beforeEach(async ({ page }) => {
       await page.goto("https://www.example.com");
     });
@@ -23,6 +19,4 @@ for (let i = 0; i < 200; i++) {
     });
   });
 
-  `,
-  );
-}
+  
