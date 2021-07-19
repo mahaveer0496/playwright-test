@@ -1,9 +1,8 @@
 name: End to end tests
 on:
   push:
-    branches-ignore:
-      - master
-      - refs/tags/*
+    branches:
+      - master      
 
 jobs:
   e2e-tests:
