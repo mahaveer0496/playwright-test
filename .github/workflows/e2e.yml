@@ -1,0 +1,42 @@
+name: End to end tests
+on:
+  push:
+    branches-ignore:
+      - master
+      - refs/tags/*
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest # or macos-latest, windows-latest
+    env:
+      TEST_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+
+      - uses: microsoft/playwright-github-action@v1
+
+      # https://github.com/expo/expo-github-action/blob/917e072b5478137bcb0a5a0e3f1af41706523c68/src/tools.ts#L58
+      - name: Increase watcher/inotify limit
+        run: sudo sysctl fs.inotify.max_user_instances=524288 && sudo sysctl fs.inotify.max_user_watches=524288 && sudo sysctl fs.inotify.max_queued_events=524288 && sudo sysctl -p
+
+      - name: install cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+            ~/.cache/ms-playwright
+          key: modules-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            modules-cache-${{ runner.os }}-
+
+      - name: Install
+        run: yarn
+      
+
+      - name: Run test        
+        run: yarn test
+      
+      
