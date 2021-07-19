@@ -2,7 +2,7 @@ name: End to end tests
 on:
   push:
     branches:
-      - master      
+      - master
 
 jobs:
   e2e-tests:
@@ -33,9 +33,6 @@ jobs:
 
       - name: Install
         run: yarn
-      
 
-      - name: Run test        
+      - name: Run test
         run: yarn test
-      
-      
