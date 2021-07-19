@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const sleep = () => new Promise((res) => setTimeout(res, 3000));
+const sleep = () => new Promise((res) => setTimeout(res, 30000));
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://www.example.com");
