@@ -8,6 +8,6 @@
     "playwright": "^1.12.3"
   },
   "scripts": {
-    "test": "playwright test --workers=1"
+    "test": "playwright test --workers=20"
   }
 }
