@@ -39,3 +39,9 @@ jobs:
 
       - name: Run test
         run: yarn test --shard=${{matrix.shard}}/6
+
+      - name: Upload e2e results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: apps/webapp/report.json
