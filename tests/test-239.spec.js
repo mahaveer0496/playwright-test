@@ -3,19 +3,14 @@
   const sleep = () => new Promise((res) => setTimeout(res, 30000));
 
   
-  test.describe("file 239", () => {
-    test.beforeEach(async ({ page }) => {
-      await page.goto("https://www.example.com");
-    });
+  test.describe("file 239", () => {    
 
     test("one", async ({ page }) => {
-      await sleep();
-      expect(await page.title()).toBe("Example Domain");
+      await sleep();      
     });
 
     test("two", async ({ page }) => {
-      await sleep();
-      expect(await page.title()).toBe("Example Domain");
+      await sleep();      
     });
   });
 
